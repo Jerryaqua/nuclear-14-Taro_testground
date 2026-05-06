@@ -4619,3 +4619,10 @@ Entries:
   id: 5836
   time: '2026-05-05T21:36:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/407
+- author: NajaTheNaja
+  changes:
+    - type: Add
+      message: 3 recipes for salvaging base reagents from wasteland chemicals
+  id: 5837
+  time: '2026-05-06T01:06:44.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/433
