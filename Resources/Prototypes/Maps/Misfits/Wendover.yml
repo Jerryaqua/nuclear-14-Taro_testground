@@ -100,7 +100,7 @@
           BoSInitiate: [ 3, 3 ]  #Misfits Change /Add/
           # BoSWashingtonInitiate: [ 3, 3 ] #Misfits Change /Comment-out/: Washington BoS removed
           Overseer: [ 1, 1 ]
-          VaultDoctor: [ 2, 4 ]
+          VaultDoctor: [ 2, 3 ]
           VaultDweller: [ 8, 10 ]
           VaultEngineer: [ 2, 3 ]
           VaultSecurity: [ 2, 5 ]
