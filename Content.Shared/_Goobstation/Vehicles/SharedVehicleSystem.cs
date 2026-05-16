@@ -51,6 +51,8 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         SubscribeLocalEvent<VehicleComponent, HornActionEvent>(OnHorn);
         SubscribeLocalEvent<VehicleComponent, SirenActionEvent>(OnSiren);
+        SubscribeLocalEvent<VehicleComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEject);
+        SubscribeLocalEvent<VehicleComponent, GetAdditionalAccessEvent>(OnGetAdditionalAccess);
     }
 
     private void OnInit(EntityUid uid, VehicleComponent component, ComponentInit args)
@@ -77,7 +79,9 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
     private void OnInsert(EntityUid uid, VehicleComponent component, ref EntInsertedIntoContainerMessage args)
     {
-        if (HasComp<InstantActionComponent>(args.Entity))
+        if (HasComp<InstantActionComponent>(args.Entity)
+            || args.Container.ID != component.KeySlot
+            || component.IsBroken)
             return;
 
         component.EngineRunning = true;
@@ -93,6 +97,8 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
     private void OnEject(EntityUid uid, VehicleComponent component, ref EntRemovedFromContainerMessage args)
     {
+        if (args.Container.ID != component.KeySlot)
+            return;
         component.EngineRunning = false;
         _appearance.SetData(component.Owner, VehicleState.Animated, false);
 
@@ -276,6 +282,21 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         if (TryComp<AccessComponent>(vehicle, out var accessComp))
             accessComp.Tags.Clear();
+    }
+    private void OnItemSlotEject(EntityUid uid, VehicleComponent comp, ref ItemSlotEjectAttemptEvent args)
+    {
+        if (!comp.PreventEjectOfKey || comp.Driver == null || args.Slot.ID != comp.KeySlot || args.User == comp.Driver)
+            return;
+
+        args.Cancelled = true;
+    }
+    private void OnGetAdditionalAccess(EntityUid uid, VehicleComponent component, ref GetAdditionalAccessEvent args)
+    {
+        var driver = component.Driver;
+        if (driver == null)
+            return;
+
+        args.Entities.Add(driver.Value);
     }
 }
 
