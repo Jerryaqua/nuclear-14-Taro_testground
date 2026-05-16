@@ -46,6 +46,25 @@
     layers:
     - state: bike_flamy2
       map: ["enum.VehicleVisualLayers.AutoAnimate"]
+  - type: Vehicle
+    renderOver: None
+    overlayPrototype: VehicleBikeFlameyOverlay
+
+- type: entity
+  id: VehicleBikeFlameyOverlay
+  name: flamey overlay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
+    layers:
+      - state: bike_flamy1_overlay
+    noRot: true
+    drawdepth: OverMobs # Set the drawdepth here to be above players non-clickable
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: Appearance
 
 - type: entity
   parent: N14VehicleBikeGreen
@@ -68,6 +87,25 @@
     layers:
     - state: bike_scrambler2
       map: ["enum.VehicleVisualLayers.AutoAnimate"]
+  - type: Vehicle
+    renderOver: None
+    overlayPrototype: VehicleBikeScramblerOverlay
+
+- type: entity
+  id: VehicleBikeScramblerOverlay
+  name: scrambler overlay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
+    layers:
+      - state: bike_scrambler1_overlay
+    noRot: true
+    drawdepth: OverMobs # Set the drawdepth here to be above players non-clickable
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: Appearance
 
 - type: entity
   parent: N14VehicleBikeGreen
