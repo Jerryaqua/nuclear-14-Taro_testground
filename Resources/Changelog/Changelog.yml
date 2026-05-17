@@ -5256,3 +5256,12 @@ Entries:
   id: 5903
   time: '2026-05-17T04:09:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/534
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added in the Enclave Supermutant role. Service guarantees citizenship!
+    - type: Tweak
+      message: gave the sm pa a map, and changed its name to Experimental X-01
+  id: 5904
+  time: '2026-05-17T05:22:37.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/543
