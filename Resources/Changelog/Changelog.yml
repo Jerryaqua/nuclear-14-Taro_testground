@@ -5217,3 +5217,16 @@ Entries:
   id: 5900
   time: '2026-05-16T22:17:56.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/535
+- author: AthenaAI
+  changes:
+    - type: Add
+      message: >-
+        Adds over 30 new vinyls to the vinyls crate list all music from the
+        jukebox now playable over the airwaves.
+    - type: Tweak
+      message: The jukebox vinyls are x3 times more common than the other music ones.
+    - type: Tweak
+      message: Increased the vinyl crate vinyls from 12 -> 20.
+  id: 5901
+  time: '2026-05-17T04:06:53.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/540
