@@ -43,7 +43,7 @@
             types:
               Poison: 3
         - !type:GenericStatusEffect
-          Conditions:
+          conditions:
           - !type:ReagentThreshold
             reagent: HealingMixture
             min: 35
