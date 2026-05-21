@@ -36,6 +36,8 @@
   - type: Tag
     tags:
     - Syringe
+  - type: DoAfter
+    doAfterDuration: 1.5
 
 - type: entity
   name: doctors syringe
@@ -76,6 +78,8 @@
   - type: Tag
     tags:
     - Syringe
+  - type: DoAfter
+    doAfterDuration: 1.5
 
 - type: entity
   parent: N14BaseSyringe
@@ -144,6 +148,8 @@
         reagents:
         - ReagentId: DirtyStimpak
           Quantity: 25
+  - type: DoAfter
+    doAfterDuration: 1.5
 
 - type: entity
   parent: N14ChemicalSyringe
@@ -735,7 +741,7 @@
     sprite: _Nuclear14/Objects/Specific/Medical/ms13_medical.rsi
     state: powder1
   - type: SmellingSalts
-    doAfterDuration: 6
+    doAfterDuration: 67
     reviveHeal:
       types:
         Asphyxiation: -40
