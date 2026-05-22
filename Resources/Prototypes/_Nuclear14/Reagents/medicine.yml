@@ -582,17 +582,6 @@
       # - !type:ReagentThreshold
       #   min: 25
       -
-- type: reaction
-  id: Epoetine
-  reactants:
-    Oxygen:
-      amount: 2
-    Uranium:
-      amount: 1
-      catalyst: true
-  products:
-    Epoetine: 3
-
 - type: reagent
   id: Epoetine
   name: reagent-name-epoetine
@@ -616,18 +605,6 @@
           types:
             Asphyxiation: 3
             Cold: 1
-
-- type: reaction
-  id: BetaEpoetine
-  reactants:
-    Epoetine:
-      amount: 1
-    Carbon:
-      amount: 1
-    Iron:
-      amount: 1
-  products:
-    BetaEpoetine: 3
 
 - type: reagent
   id: BetaEpoetine
