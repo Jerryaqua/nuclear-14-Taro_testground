@@ -5698,3 +5698,29 @@ Entries:
   id: 5946
   time: '2026-05-25T11:22:04.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/596
+- author: Squagg
+  changes:
+    - type: Tweak
+      message: >-
+        Intelligence now speeds up more medical actions, including CPR, healing,
+        scans, surgery, defibrillators, injectors, and related medical
+        do-afters.
+    - type: Tweak
+      message: >-
+        Intelligence now reduces lathe material costs, scaling up to a 25%
+        discount at 10 INT.
+    - type: Fix
+      message: >-
+        Fixed Strength melee damage scaling so it applies properly to wielded
+        and two-handed melee weapons.
+    - type: Fix
+      message: Fixed Agility melee attack rate handling.
+    - type: Tweak
+      message: >-
+        Updated SPECIAL character screen details to show more accurate INT and
+        Luck effects.
+    - type: Add
+      message: Added the Followers of the Apocalypse Open Archive terminal database.
+  id: 5947
+  time: '2026-05-25T12:13:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/597
