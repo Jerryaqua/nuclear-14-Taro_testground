@@ -5777,3 +5777,10 @@ Entries:
   id: 5954
   time: '2026-05-25T23:38:24.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/602
+- author: pierow
+  changes:
+    - type: Remove
+      message: Broken Pipe blunt damage '''balanced''' significantly (42 -> 23)
+  id: 5955
+  time: '2026-05-26T03:02:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/603
