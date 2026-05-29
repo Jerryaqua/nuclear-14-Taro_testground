@@ -4,6 +4,8 @@ using Content.Server.Chat.Systems;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Pathfinding;
+using Content.Shared._NC.Mountable;
+using Content.Shared._NC.Mountable.Components;
 using Content.Shared._Misfits.NPC;
 using Content.Shared._Misfits.NPC.Components;
 using Content.Shared._Misfits.Special;
@@ -89,6 +91,7 @@ namespace Content.Server.NPC.Systems
             SubscribeLocalEvent<FollowerCommanderComponent, HitscanHitEntityEvent>(OnCommanderHitscanHit);
             SubscribeLocalEvent<RecruitedFollowerComponent, DamageChangedEvent>(OnFollowerDamaged);
             SubscribeLocalEvent<RecruitedFollowerComponent, ComponentShutdown>(OnRecruitedFollowerShutdown);
+            SubscribeLocalEvent<RecruitedFollowerComponent, MountMovementControlAttemptEvent>(OnFollowerMountMovementControlAttempt);
             SubscribeLocalEvent<FollowerCommanderComponent, ComponentStartup>(OnCommanderStartup);
             SubscribeLocalEvent<FollowerCommanderComponent, EntParentChangedMessage>(OnCommanderParentChanged);
             SubscribeAllEvent<IssueFollowerOrderMessage>(OnIssueFollowerOrder);
@@ -597,6 +600,12 @@ namespace Content.Server.NPC.Systems
             Dirty(ent.Comp.Commander, commander);
         }
 
+        private void OnFollowerMountMovementControlAttempt(Entity<RecruitedFollowerComponent> ent, ref MountMovementControlAttemptEvent args)
+        {
+            if (args.Rider != ent.Comp.Commander)
+                args.Cancelled = true;
+        }
+
         private void OnIssueFollowerOrder(IssueFollowerOrderMessage msg, EntitySessionEventArgs args)
         {
             var commander = args.SenderSession.AttachedEntity;
@@ -644,6 +653,13 @@ namespace Content.Server.NPC.Systems
 
             _htn.Replan(htn);
             EnsureComp<InputMoverComponent>(target);
+
+            if (TryComp<MountableComponent>(target, out var mountable) &&
+                mountable.RiderControlsMovement)
+            {
+                return;
+            }
+
             WakeNPC(target, htn);
         }
 

@@ -17,6 +17,7 @@ special-low-charisma-opener-12 = You know,
 special-low-charisma-opener-13 = Like,
 special-low-charisma-opener-14 = Honestly,
 special-low-charisma-opener-15 = Sorry,
+special-low-charisma-opener-16 = I guess,
 
 
 special-low-charisma-closer-0 = , I suppose
@@ -34,4 +35,4 @@ special-low-charisma-closer-11 = , honestly
 special-low-charisma-closer-12 = , not gonna lie
 special-low-charisma-closer-13 = , if that helps
 special-low-charisma-closer-14 = , kinda
-
+special-low-charisma-closer-15 = , I suppose
