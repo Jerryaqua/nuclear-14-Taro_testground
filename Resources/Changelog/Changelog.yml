@@ -6050,3 +6050,10 @@ Entries:
   id: 5980
   time: '2026-05-29T01:49:22.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/630
+- author: Tytos
+  changes:
+    - type: Fix
+      message: Fixed latejoin
+  id: 5981
+  time: '2026-05-29T10:34:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/631
