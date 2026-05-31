@@ -6148,3 +6148,10 @@ Entries:
   id: 5990
   time: '2026-05-31T13:49:38.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/645
+- author: pierow
+  changes:
+    - type: Fix
+      message: Fixes SM FotA Loadout; They can bring SM items now.
+  id: 5991
+  time: '2026-05-31T13:50:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/646
