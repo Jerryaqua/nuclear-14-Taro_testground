@@ -6181,3 +6181,20 @@ Entries:
   id: 5994
   time: '2026-05-31T22:09:13.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/647
+- author: Billy boy
+  changes:
+    - type: Tweak
+      message: all lasers reworked heavily. Hood chuds rejoice.
+    - type: Add
+      message: >-
+        Added so much fun. .308 sniper buffed, legion can make more sks clips,
+        buffed 5.56 by 2 points.
+    - type: Tweak
+      message: >-
+        MF cells are more expensive for vault and BOS, you'll realize why very
+        quickly.
+    - type: Tweak
+      message: touched up legion speed boosts. im sorry little guys.
+  id: 5995
+  time: '2026-05-31T22:31:05.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/651
