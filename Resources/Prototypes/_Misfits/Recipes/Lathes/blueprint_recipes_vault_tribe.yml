@@ -339,8 +339,7 @@
     Glass: 500
     Circuitry: 100
     ScrapElectronic: 200
-    N14Gold: 300
-    N14Gold: 500
+    N14Gold: 800
 
 - type: latheRecipe
   id: N14BPVaultAmmoMag10mmSMG
