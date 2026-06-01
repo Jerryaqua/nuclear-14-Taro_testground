@@ -18,7 +18,7 @@
     - N14FrontalLisp
     - N14Liar
     - N14ScottishAccent
-    - N14FrenchAccent
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
