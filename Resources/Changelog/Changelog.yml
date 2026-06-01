@@ -6266,3 +6266,10 @@ Entries:
   id: 5999
   time: '2026-06-01T00:04:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/654
+- author: NajaTheNaja
+  changes:
+    - type: Fix
+      message: restores npcupdates to original value since we have juicy server.
+  id: 6000
+  time: '2026-06-01T01:46:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/643
