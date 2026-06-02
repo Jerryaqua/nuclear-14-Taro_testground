@@ -1070,9 +1070,6 @@
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  - type: ClothingSpeedModifier
-    walkModifier: 1.1 # same as legion recon armor
-    sprintModifier: 1.1
 
 #MARK: Veteran
 
