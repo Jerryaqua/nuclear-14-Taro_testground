@@ -7,9 +7,9 @@
   showBorder: true
   overrideConsoleVisibility: true
   canBeAntag: false
-  name: job-name-ncr-citizen 
-  description: job-description-ncr-citizen
-  playTimeTracker: NCRCitizen
+  name: job-name-ncr-trader 
+  description: job-description-ncr-trader
+  playTimeTracker: NCRTrader
   requirements: # TEMP REMOVED - all requirements removed
    # - !type:MinPlayersRequirement
    #   min: 55
@@ -18,11 +18,10 @@
       - Human
       - Ghoul
       - GhoulGlowing
-      - SuperMutant
    # - !type:CharacterOverallTimeRequirement
    #   min: 3600
-  startingGear: NCRCitizenGear
-  icon: "JobIconNCRPrisoner"
+  startingGear: NCRTraderGear
+  icon: "JobIconNCRCadet"
   supervisors: job-supervisors-ncr-prisoners
   alwaysUseSpawner: true
   access:
@@ -36,7 +35,7 @@
           - NCR
 
 - type: startingGear
-  id: NCRCitizenGear
+  id: NCRTraderGear
   equipment:
     ears: MisfitsClothingHeadsetWastelandScrap
     jumpsuit: N14ClothingUniformJumpsuitMerchant
@@ -50,9 +49,6 @@
   storage:
     back:
     - N14BoxPlasticFilledWastelander 
-  storage:
-    back:
-    - N14BoxPlasticFilledWastelander
 
 - type: playTimeTracker
-  id: NCRCitizen
+  id: NCRTrader

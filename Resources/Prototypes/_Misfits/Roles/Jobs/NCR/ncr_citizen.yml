@@ -4,7 +4,7 @@
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 1
-  showBorder: true
+  showBorder: false
   overrideConsoleVisibility: true
   canBeAntag: false
   name: job-name-ncr-citizen 
@@ -18,11 +18,10 @@
       - Human
       - Ghoul
       - GhoulGlowing
-      - SuperMutant
    # - !type:CharacterOverallTimeRequirement
    #   min: 3600
   startingGear: NCRCitizenGear
-  icon: "JobIconNCRPrisoner"
+  icon: "JobIconNCRCadet"
   supervisors: job-supervisors-ncr-prisoners
   alwaysUseSpawner: true
   access:

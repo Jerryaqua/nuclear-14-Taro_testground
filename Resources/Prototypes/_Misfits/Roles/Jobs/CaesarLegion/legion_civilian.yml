@@ -4,7 +4,7 @@
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 10
-  showBorder: true  # #Misfits Change: Visual separator — Slave sits alone below Auxilia
+  showBorder: false 
   name: job-name-caesar-legion-citizen
   description: job-description-caesar-legion-citizen
   playTimeTracker: CaesarLegionCitizen
@@ -18,7 +18,7 @@
     min: 0
   startingGear: CaesarLegionCitizenGear
   alwaysUseSpawner: true
-  icon: "JobIconLegionSlave"
+  icon: "JobIconlegionerRecruit"
   supervisors: job-supervisors-caesar-legion-slave
   canBeAntag: false
   accessGroups:
@@ -28,6 +28,7 @@
     components:
       - type: NpcFactionMember
         factions:
+          - Wastelander
           - CaesarLegion
       - type: ReplacementAccent
         accent: latin
