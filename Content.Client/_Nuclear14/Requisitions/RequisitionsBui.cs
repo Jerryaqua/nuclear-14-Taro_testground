@@ -66,6 +66,7 @@ public sealed class RequisitionsBui : BoundUserInterface
                 SendMessage(new RequisitionsPlatformMsg(false));
         };
         _window.SellRefreshButton.OnPressed += _ => SendMessage(new RequisitionsRefreshMsg());
+        _window.SellSearchBar.OnTextChanged += _ => UpdateSellTab();
     }
 
     public void Refresh()
@@ -117,6 +118,7 @@ public sealed class RequisitionsBui : BoundUserInterface
 
         _window.BountiesStatusLabel.SetMessage(FormattedMessage.FromUnformatted(string.Empty));
         var completed = _state?.CompletedBounties ?? new List<string>();
+        var progress = _state?.BountyProgress ?? new Dictionary<string, int>();
         foreach (var bounty in bounties)
         {
             var name = bounty.Name is { } loc && Loc.TryGetString(loc, out var localized)
@@ -125,14 +127,22 @@ public sealed class RequisitionsBui : BoundUserInterface
                     ? itemProto.Name
                     : bounty.Item.Id;
 
-            var done = completed.Contains(bounty.Id);
-            var row = new RichTextLabel { HorizontalExpand = true };
-            row.SetMessage(FormattedMessage.FromMarkupOrThrow(Loc.GetString(
-                done ? "n14-requisitions-bounty-row-done" : "n14-requisitions-bounty-row",
-                ("amount", bounty.Amount),
-                ("item", name),
-                ("reward", bounty.Reward))));
-            _window.BountiesContainer.AddChild(row);
+            string markup;
+            if (completed.Contains(bounty.Id))
+            {
+                markup = Loc.GetString("n14-requisitions-bounty-row-done",
+                    ("amount", bounty.Amount), ("item", name), ("reward", bounty.Reward));
+            }
+            else
+            {
+                markup = Loc.GetString("n14-requisitions-bounty-row",
+                    ("done", progress.GetValueOrDefault(bounty.Id)),
+                    ("amount", bounty.Amount),
+                    ("item", name),
+                    ("reward", bounty.Reward));
+            }
+
+            _window.BountiesContainer.AddChild(MakeIconRow(bounty.Item.Id, markup));
         }
     }
 
@@ -171,20 +181,19 @@ public sealed class RequisitionsBui : BoundUserInterface
             return;
 
         var value = _state?.PlatformSaleValue ?? 0;
-        var count = _state?.PlatformSaleCount ?? 0;
+        var canSell = _state is { PlatformLowered: Raised, Busy: false } && value > 0;
 
-        _window.SellInfoLabel.SetMessage(FormattedMessage.FromMarkupOrThrow(Loc.GetString(
-            "n14-requisitions-sell-info", ("count", count), ("value", value))));
-
-        var canSell = _state is { PlatformLowered: Raised, Busy: false };
         _window.SellButton.Disabled = !canSell;
+        _window.SellButton.Text = value > 0
+            ? Loc.GetString("n14-requisitions-sell-lower-value", ("value", value))
+            : Loc.GetString("n14-requisitions-sell-lower");
 
         var status = string.Empty;
         if (_state is not { Linked: true })
             status = Loc.GetString("n14-requisitions-sell-no-platform");
         else if (_state.PlatformLowered != Raised)
             status = Loc.GetString("n14-requisitions-sell-raise-first");
-        else if (count == 0)
+        else if (value == 0)
             status = Loc.GetString("n14-requisitions-sell-empty");
 
         _window.SellStatusLabel.SetMessage(FormattedMessage.FromUnformatted(status));
@@ -200,6 +209,7 @@ public sealed class RequisitionsBui : BoundUserInterface
             return;
         }
 
+        var search = _window.SellSearchBar.Text.Trim();
         foreach (var entry in sellEntries)
         {
             var name = entry.Name is { } loc && Loc.TryGetString(loc, out var localized)
@@ -207,6 +217,9 @@ public sealed class RequisitionsBui : BoundUserInterface
                 : _prototypes.TryIndex<EntityPrototype>(entry.Item, out var itemProto)
                     ? itemProto.Name
                     : entry.Item.Id;
+
+            if (!string.IsNullOrWhiteSpace(search) && !name.Contains(search, StringComparison.CurrentCultureIgnoreCase))
+                continue;
 
             string reward;
             if (entry.Exchange.Count > 0)
@@ -226,10 +239,8 @@ public sealed class RequisitionsBui : BoundUserInterface
                 reward = $"${entry.Value}";
             }
 
-            var row = new RichTextLabel { HorizontalExpand = true };
-            row.SetMessage(FormattedMessage.FromMarkupOrThrow(Loc.GetString(
-                "n14-requisitions-sell-catalog-row", ("item", name), ("reward", reward))));
-            _window.SellCatalogContainer.AddChild(row);
+            var markup = Loc.GetString("n14-requisitions-sell-catalog-row", ("item", name), ("reward", reward));
+            _window.SellCatalogContainer.AddChild(MakeIconRow(entry.Item.Id, markup));
         }
     }
 
@@ -424,7 +435,7 @@ public sealed class RequisitionsBui : BoundUserInterface
                 };
                 card.ProductName.SetMessage(FormattedMessage.FromUnformatted(display.Name), defaultColor: RequisitionsUiStyles.Green);
                 card.Description.SetMessage(FormattedMessage.FromUnformatted(display.Description), defaultColor: RequisitionsUiStyles.TextDim);
-                card.ToolTip = GetCrateContentsText(entry);
+                card.TooltipSupplier = _ => BuildCrateTooltip(entry);
 
                 card.AddButton.OnPressed += _ => AddToCart(key);
                 card.RemoveButton.OnPressed += _ => RemoveFromCart(key);
@@ -504,7 +515,7 @@ public sealed class RequisitionsBui : BoundUserInterface
         return Math.Max(0, entry.Stock - bought - GetCartAmount(key));
     }
 
-    private string? GetCrateContentsText(RequisitionsEntry entry)
+    private Control? BuildCrateTooltip(RequisitionsEntry entry)
     {
         if (!_prototypes.TryIndex<EntityPrototype>(entry.Crate, out var proto) ||
             !proto.TryGetComponent<StorageFillComponent>("StorageFill", out var fill) ||
@@ -513,17 +524,27 @@ public sealed class RequisitionsBui : BoundUserInterface
             return null;
         }
 
-        var lines = new List<string>();
+        var contents = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            Margin = new Thickness(6),
+        };
+
         foreach (var item in fill.Contents)
         {
             if (item.PrototypeId is not { } pid)
                 continue;
 
             var name = _prototypes.TryIndex<EntityPrototype>(pid, out var itemProto) ? itemProto.Name : pid.Id;
-            lines.Add($"{item.Amount}x {name}");
+            contents.AddChild(MakeIconRow(pid.Id, $"{item.Amount}x {name}"));
         }
 
-        return lines.Count == 0 ? null : string.Join("\n", lines);
+        if (contents.ChildCount == 0)
+            return null;
+
+        var panel = new PanelContainer { PanelOverride = RequisitionsUiStyles.CardPanel() };
+        panel.AddChild(contents);
+        return panel;
     }
 
     private void RefreshCart()
@@ -820,6 +841,47 @@ public sealed class RequisitionsBui : BoundUserInterface
         }
 
         return new DisplayIcon(textures, modulate);
+    }
+
+    private DisplayIcon GetEntityIcon(string proto)
+    {
+        return _prototypes.TryIndex<EntityPrototype>(proto, out var prototype)
+            ? GetPrototypeDisplayIcon(prototype)
+            : new DisplayIcon(new List<Texture>(), Color.White);
+    }
+
+    private Control MakeIconRow(string itemProto, string markup, string? tooltip = null)
+    {
+        var row = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+            Margin = new Thickness(0, 2),
+        };
+
+        var iconData = GetEntityIcon(itemProto);
+        var icon = new LayeredTextureRect
+        {
+            SetSize = new Vector2(32, 32),
+            Stretch = TextureRect.StretchMode.KeepAspectCentered,
+            VerticalAlignment = Control.VAlignment.Center,
+            Textures = iconData.Textures,
+            Modulate = iconData.Modulate,
+        };
+        row.AddChild(icon);
+        row.AddChild(new Control { MinWidth = 6 });
+
+        var label = new RichTextLabel { HorizontalExpand = true, VerticalAlignment = Control.VAlignment.Center };
+        label.SetMessage(FormattedMessage.FromMarkupOrThrow(markup));
+        row.AddChild(label);
+
+        if (tooltip != null)
+        {
+            row.ToolTip = tooltip;
+            row.MouseFilter = Control.MouseFilterMode.Pass;
+        }
+
+        return row;
     }
 
     private static bool MatchesSearch(ProductDisplay display, string search)

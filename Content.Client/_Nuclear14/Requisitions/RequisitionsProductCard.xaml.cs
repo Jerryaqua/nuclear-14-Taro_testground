@@ -20,5 +20,6 @@ public sealed partial class RequisitionsProductCard : BoxContainer
         RequisitionsUiStyles.ApplyQuantityButton(MaxButton);
         Cost.Modulate = RequisitionsUiStyles.Green;
         Quantity.Modulate = RequisitionsUiStyles.Green;
+        MouseFilter = MouseFilterMode.Pass;
     }
 }

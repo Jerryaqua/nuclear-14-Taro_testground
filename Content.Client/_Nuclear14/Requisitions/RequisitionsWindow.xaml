@@ -103,24 +103,26 @@
                               HorizontalExpand="True"
                               VerticalExpand="True">
                     <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                        <RichTextLabel Name="SellInfoLabel" Access="Public" HorizontalExpand="True" />
+                        <Button Name="SellButton"
+                                Access="Public"
+                                Text="{Loc n14-requisitions-sell-lower}"
+                                StyleClasses="ButtonSquare"
+                                HorizontalExpand="True" />
+                        <Control MinWidth="5" />
                         <Button Name="SellRefreshButton"
                                 Access="Public"
                                 Text="{Loc n14-requisitions-sell-refresh}"
                                 StyleClasses="ButtonSquare"
                                 MinWidth="90" />
                     </BoxContainer>
-                    <Control MinHeight="8" />
-                    <Button Name="SellButton"
-                            Access="Public"
-                            Text="{Loc n14-requisitions-sell-lower}"
-                            StyleClasses="ButtonSquare"
-                            HorizontalAlignment="Left"
-                            MinWidth="160" />
-                    <Control MinHeight="6" />
                     <RichTextLabel Name="SellStatusLabel" Access="Public" />
-                    <Control MinHeight="10" />
+                    <Control MinHeight="8" />
                     <Label Text="{Loc n14-requisitions-sell-catalog-title}" StyleClasses="LabelKeyText" />
+                    <Control MinHeight="4" />
+                    <LineEdit Name="SellSearchBar"
+                              Access="Public"
+                              PlaceHolder="{Loc n14-requisitions-search-placeholder}"
+                              HorizontalExpand="True" />
                     <Control MinHeight="4" />
                     <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
                         <BoxContainer Name="SellCatalogContainer"
