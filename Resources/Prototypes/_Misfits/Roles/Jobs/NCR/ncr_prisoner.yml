@@ -1,5 +1,5 @@
 - type: job
-  id: NCRPisoner
+  id: NCRPrisoner
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change

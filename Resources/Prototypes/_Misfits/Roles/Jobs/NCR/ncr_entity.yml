@@ -227,7 +227,7 @@
 - type: entity
   parent: N14MobHumanNCRCadet
   id: N14MobHumanNCRPisoner
-  name: NCRPisoner
+  name: NCRPrisoner
   components:
     - type: Icon
       state: soldier
