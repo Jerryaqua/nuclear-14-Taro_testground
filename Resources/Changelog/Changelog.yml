@@ -6475,3 +6475,14 @@ Entries:
   id: 6019
   time: '2026-06-04T20:35:19.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/687
+- author: Lucky
+  changes:
+    - type: Add
+      message: Bartender has a shaker mapped.
+    - type: Tweak
+      message: misc fixes
+    - type: Add
+      message: 'preperations for Yuma move  '
+  id: 6020
+  time: '2026-06-05T10:16:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/693
