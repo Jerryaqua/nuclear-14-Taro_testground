@@ -6533,3 +6533,10 @@ Entries:
   id: 6022
   time: '2026-06-05T10:19:00.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/664
+- author: Oli
+  changes:
+    - type: Tweak
+      message: Mute + Deaf Trait unselectable by HT + Ranger Recruit
+  id: 6023
+  time: '2026-06-06T02:15:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/702
