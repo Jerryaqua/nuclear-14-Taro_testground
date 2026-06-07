@@ -6556,3 +6556,69 @@ Entries:
   id: 6025
   time: '2026-06-06T04:39:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/704
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: put in the eighties ID's (still need their own sprites)
+    - type: Add
+      message: gave the 80's their own channel (Y) and headset (sprite needed too)
+  id: 6026
+  time: '2026-06-06T08:16:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/707
+- author: Vixting
+  changes:
+    - type: Fix
+      message: Fix beaker transfer not being updated on the lcient
+  id: 6027
+  time: '2026-06-06T16:58:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/708
+- author: Bill
+  changes:
+    - type: Fix
+      message: Fixed a small .308 overpressure mag bug
+    - type: Tweak
+      message: upped .308 sniper mag capacity to 10
+  id: 6028
+  time: '2026-06-06T22:02:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/711
+- author: qevie
+  changes:
+    - type: Tweak
+      message: >-
+        More ranger recruit slots. Go my chuddies, you can finally get ranger
+        time.
+  id: 6029
+  time: '2026-06-06T22:02:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/709
+- author: Squagg
+  changes:
+    - type: Fix
+      message: >-
+        Fixed some diagonal and slanted structures having their intended
+        rotations corrected incorrectly.
+    - type: Fix
+      message: >-
+        Fixed admin-spawned/cloned player bodies not receiving the selected
+        character profile's SPECIAL values.
+  id: 6030
+  time: '2026-06-07T15:04:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/716
+- author: Sirius
+  changes:
+    - type: Add
+      message: >-
+        A vinyl record player and radio station setup was added to the
+        broadcasting room for town reporters. 
+    - type: Add
+      message: >-
+        A stage for live performances was added to the bar, a second bar counter
+        was added, and some new shelving was installed to store some spare
+        drinks and supplies.
+    - type: Remove
+      message: >-
+        The shelves and lockers being robbed at round start due to their public
+        access have been replaced and removed. No more stealing from the
+        bartenders.
+  id: 6031
+  time: '2026-06-07T15:05:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/712
