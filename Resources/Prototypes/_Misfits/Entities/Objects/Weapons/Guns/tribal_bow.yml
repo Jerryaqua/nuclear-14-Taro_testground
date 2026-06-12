@@ -53,8 +53,8 @@
           True: { state: wielded }
           False: { state: unwielded }
   - type: Construction
-    graph: ImprovisedBow
-    node: ImprovisedBow
+    graph: TribalWarBow
+    node: TribalWarBow
 
 # #Misfits Add - Recurve Bow: lighter and faster, favored by tribal hunters for quick follow-up shots.
 - type: entity
@@ -97,5 +97,5 @@
           True: { state: wielded }
           False: { state: unwielded }
   - type: Construction
-    graph: ImprovisedBow
-    node: ImprovisedBow
+    graph: TribalRecurveBow
+    node: TribalRecurveBow
