@@ -6991,3 +6991,12 @@ Entries:
   id: 6067
   time: '2026-06-14T16:07:58.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/797
+- author: thedaneeffect
+  changes:
+    - type: Fix
+      message: >-
+        The Pet Pigrat companion now understands languages like the other pets,
+        instead of none.
+  id: 6068
+  time: '2026-06-14T19:47:50.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/801
