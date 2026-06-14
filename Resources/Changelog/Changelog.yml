@@ -7032,3 +7032,12 @@ Entries:
   id: 6070
   time: '2026-06-14T22:15:17.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/804
+- author: Squagg
+  changes:
+    - type: Fix
+      message: >-
+        Changed the Legion tactical chalkboard to use general Legion access
+        instead of Centurion-only access.
+  id: 6071
+  time: '2026-06-14T23:25:25.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/805
