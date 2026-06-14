@@ -691,12 +691,13 @@
         Blunt: 10
         Piercing: 1
   - type: NPCRetaliation # Aggro on the attacker when damaged from any range
+    attackMemoryLength: 30
   - type: HTN
     rootTask:
      task: RuminantHostileCompound
-      blackboard:
-      NavSmash: !type:Bool
-        true
+    blackboard:
+     NavSmash: !type:Bool
+       true
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup
