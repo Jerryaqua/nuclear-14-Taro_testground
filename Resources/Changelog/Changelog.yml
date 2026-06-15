@@ -7128,3 +7128,10 @@ Entries:
   id: 6076
   time: '2026-06-15T20:54:48.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/810
+- author: Squagg
+  changes:
+    - type: Add
+      message: Added an admin command to force a player onto an ally's side in a war.
+  id: 6077
+  time: '2026-06-15T20:55:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/809
