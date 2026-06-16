@@ -370,7 +370,8 @@ public sealed partial class GunSystem : SharedGunSystem
                 case AmmoComponent newAmmo:
                     CreateAndFireProjectiles(ent!.Value, newAmmo);
                     Recoil(user, mapDirection, gun.CameraRecoilScalarModified);
-                    RemoveShootable(ent.Value);
+                    if (!IsClientSide(ent!.Value))
+                        RemoveShootable(ent.Value);
                     break;
                 case HitscanPrototype:
                     PredictHitscan(gunUid, fromCoordinates, mapDirection, mapDirection.ToAngle(), gun.Target, user);
