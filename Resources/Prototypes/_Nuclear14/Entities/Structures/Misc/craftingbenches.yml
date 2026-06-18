@@ -452,7 +452,7 @@
     - N14StationRadioServerCircuitboard
     - N14StationRadioRigCircuitboard
     - N14StationRadioCircuitboard
-    - N14DoorElectronics    
+    - N14DoorElectronics
   - type: ActivatableUIRequiresPower
 
 - type: entity
@@ -656,6 +656,7 @@
     - N14PillCanisterCateye
     - N14PillCanisterFixer
     - N14JetInhaler
+    - N14Med-XInjector
     - N14TurboInhaler
     - N14HydraInhaler
     - N14ChemicalSyringeAntidoteEmpty
