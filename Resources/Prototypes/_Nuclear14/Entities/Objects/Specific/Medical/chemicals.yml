@@ -189,7 +189,7 @@
     - state: superstimpak-empty
       map: [ "enum.SolutionContainerLayers.Base" ]
   - type: Icon
-    sprite: _Nuclear14/Objects/Specific/Medical/ms13_stimpak.rsi
+    sprite: _Nuclear14/Objects/Specific/Medical/ms13_superstimpak.rsi
     state: "superstimpak-empty"
   - type: SolutionContainerVisuals
     maxFillLevels: 1
