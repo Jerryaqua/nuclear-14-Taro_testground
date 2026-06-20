@@ -1,6 +1,6 @@
 using Content.Server.Chat.Systems;
 using Content.Server.CombatMode.Disarm;
-using Content.Server._Misfits.Movement;
+using Content.Server.Movement.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Components;
@@ -25,7 +25,6 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
 using System.Numerics;
@@ -42,7 +41,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DamageExamineSystem _damageExamine = default!;
-    [Dependency] private readonly ServerMisfitsLagCompensationSystem _lag = default!;
+    [Dependency] private readonly LagCompensationSystem _lag = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
@@ -85,7 +84,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
     }
 
     protected override bool ArcRaySuccessful(EntityUid targetUid, Vector2 position, Angle angle, Angle arcWidth, float range, MapId mapId,
-        EntityUid ignore, ICommonSession? session, GameTick? lastRealTick = null)
+        EntityUid ignore, ICommonSession? session)
     {
         // Originally the client didn't predict damage effects so you'd intuit some level of how far
         // in the future you'd need to predict, but then there was a lot of complaining like "why would you add artifical delay" as if ping is a choice.
@@ -97,38 +96,13 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         // A) Wide-damage is split anyway
         // B) We run the same validation we do for click attacks.
 
-        EntityCoordinates targetCoords;
-        Angle targetLocalAngle;
+        // Could also check the arc though future effort + if they're aimbotting it's not really going to make a difference.
 
-        if (session != null)
-        {
-            (targetCoords, targetLocalAngle) = lastRealTick is { } tick
-                ? _lag.GetCoordinatesAngle(targetUid, tick - 1)
-                : _lag.GetCoordinatesAngle(targetUid, session);
-            if (!Interaction.InRangeUnobstructed(ignore, targetUid, targetCoords, targetLocalAngle, range + 0.1f))
-                return false;
-        }
-        else
-        {
-            var xform = Transform(targetUid);
-            targetCoords = xform.Coordinates;
-            targetLocalAngle = xform.LocalRotation;
-            if (!Interaction.InRangeUnobstructed(ignore, targetUid, range + 0.1f))
-                return false;
-        }
+        // (This runs lagcomp internally and is what clickattacks use)
+        if (!Interaction.InRangeUnobstructed(ignore, targetUid, range + 0.1f))
+            return false;
 
-        var targetMapPos = TransformSystem.ToMapCoordinates(targetCoords);
-        if (targetMapPos.MapId == mapId)
-        {
-            var toTarget = targetMapPos.Position - position;
-            if (toTarget.LengthSquared() > 0.001f)
-            {
-                var diff = Angle.ShortestDistance(angle, toTarget.ToWorldAngle());
-                if (Math.Abs((double) diff) > (double) arcWidth / 2.0 + 0.1)
-                    return false;
-            }
-        }
-
+        // TODO: Check arc though due to the aforementioned aimbot + damage split comments it's less important.
         return true;
     }
 
@@ -156,7 +130,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 return false;
         }
 
-        if (!InRange(user, target, component.Range, session, ev.LastRealTick))
+        if (!InRange(user, target, component.Range, session))
         {
             return false;
         }
@@ -213,16 +187,14 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         return true;
     }
 
-    protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session, GameTick? lastRealTick = null)
+    protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session)
     {
         EntityCoordinates targetCoordinates;
         Angle targetLocalAngle;
 
         if (session is { } pSession)
         {
-            (targetCoordinates, targetLocalAngle) = lastRealTick is { } tick
-                ? _lag.GetCoordinatesAngle(target, tick - 1)
-                : _lag.GetCoordinatesAngle(target, pSession);
+            (targetCoordinates, targetLocalAngle) = _lag.GetCoordinatesAngle(target, pSession);
             return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range);
         }
 
