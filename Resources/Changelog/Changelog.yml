@@ -7614,3 +7614,10 @@ Entries:
   id: 6119
   time: '2026-06-21T20:21:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/870
+- author: RedBookcase
+  changes:
+    - type: Tweak
+      message: Changed some underpriced Vault BP's.
+  id: 6120
+  time: '2026-06-21T20:25:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/868
