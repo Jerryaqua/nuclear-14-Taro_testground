@@ -7737,3 +7737,10 @@ Entries:
   id: 6131
   time: '2026-06-23T21:51:46.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/862
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: /surrender added to whitelist
+  id: 6132
+  time: '2026-06-23T22:50:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/885
