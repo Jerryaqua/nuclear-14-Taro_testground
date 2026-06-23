@@ -20,7 +20,7 @@
 
 - type: handCraftIntellRecipe
   id: N14Bola
-  minInt: 9
+  minInt: 7
 
 - type: handCraftIntellRecipe
   id: N14WastelandTribalJavelin
@@ -40,11 +40,11 @@
 
 - type: handCraftIntellRecipe
   id: N14TrainingSword
-  minInt: 8
+  minInt: 6
 
 - type: handCraftIntellRecipe
   id: N14LongSword
-  minInt: 8
+  minInt: 7
 
 - type: handCraftIntellRecipe
   id: MakeshiftShield
@@ -56,7 +56,7 @@
 
 - type: handCraftIntellRecipe
   id: N14InsectShield
-  minInt: 9
+  minInt: 8
 
 - type: handCraftIntellRecipe
   id: N14ChemicalPayload
@@ -96,7 +96,7 @@
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterBlackRobes
-  minInt: 8
+  minInt: 7
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterLightLeatherArmor
@@ -263,10 +263,6 @@
   minInt: 8
 
 - type: handCraftIntellRecipe
-  id: N14MagazineMinigun5mm
-  minInt: 10
-
-- type: handCraftIntellRecipe
   id: MagazineBox50
   minInt: 10
 
@@ -344,7 +340,7 @@
 
 - type: handCraftIntellRecipe
   id: N14CleanGauze1
-  minInt: 6
+  minInt: 8
 
 - type: handCraftIntellRecipe
   id: N14ClothingEyesGlassesWelding
@@ -357,10 +353,6 @@
 - type: handCraftIntellRecipe
   id: N14HandLabeler
   minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14GeigerCounter
-  minInt: 7
 
 - type: handCraftIntellRecipe
   id: N14HydroponicsToolClippers
@@ -401,18 +393,6 @@
 - type: handCraftIntellRecipe
   id: N14RemoteSignaller
   minInt: 10
-
-- type: handCraftIntellRecipe
-  id: N14TRayScanner
-  minInt: 9
-
-- type: handCraftIntellRecipe
-  id: N14NetworkConfigurator
-  minInt: 9
-
-- type: handCraftIntellRecipe
-  id: N14RPED
-  minInt: 9
 
 - type: handCraftIntellRecipe
   id: TimerTrigger
