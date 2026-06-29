@@ -8113,3 +8113,20 @@ Entries:
   id: 6160
   time: '2026-06-29T02:22:13.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/924
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Followers, Enclave, Rangers, NCR, Brotherhood individualized tacmaps w/
+        appropriate access. Mappers will need to re-map accordingly. example,
+        FoTA tacmap access defaults to BoS. Will no longer w/ proper mapped
+        proto.
+    - type: Add
+      message: auto map render on server start if map values/yaml change
+    - type: Fix
+      message: adminlog spam from Projectile Bullet
+    - type: Fix
+      message: SIlicons no longer have crit crawl
+  id: 6161
+  time: '2026-06-29T12:51:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/926
