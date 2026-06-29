@@ -8071,3 +8071,12 @@ Entries:
   id: 6156
   time: '2026-06-28T21:36:19.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/913
+- author: paige404
+  changes:
+    - type: Tweak
+      message: >-
+        All physical damages can sever limbs now. This is good though, don't
+        worry. It's a good thing.
+  id: 6157
+  time: '2026-06-29T00:15:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/921
