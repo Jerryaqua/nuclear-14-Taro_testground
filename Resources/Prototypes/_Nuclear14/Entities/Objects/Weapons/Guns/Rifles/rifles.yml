@@ -442,13 +442,6 @@
         whitelist:
           tags:
             - N14Clip308Rifle
-      gun_chamber:
-        name: Chamber
-        startingItem: N14Cartridge308Rifle
-        priority: 1
-        whitelist:
-          tags:
-            - N14Cartridge308Rifle
   - type: FollowDistance
     backStrength: 3
   - type: StaticPrice
