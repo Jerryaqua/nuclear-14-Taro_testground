@@ -7,12 +7,14 @@
   - type: Tag
     tags:
       - N14MagazineMinigun5mm
+  - type: Item
+    size: Normal
   - type: BallisticAmmoProvider
     mayTransfer: true
     whitelist:
       tags:
         - N14CartridgePistol5
-    capacity: 200
+    capacity: 500
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

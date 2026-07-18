@@ -1326,11 +1326,11 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 85
+    Lead: 500
 
-    N14Brass: 55
+    N14Brass: 250
 
-    N14Gunpowder: 55
+    N14Gunpowder: 1000
 
 
 - type: latheRecipe

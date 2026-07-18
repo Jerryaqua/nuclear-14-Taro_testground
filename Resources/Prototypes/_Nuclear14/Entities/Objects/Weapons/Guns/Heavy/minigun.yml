@@ -96,13 +96,13 @@
   components:
   - type: Gun
     minAngle: 4 # #Misfits Tweak - nerfed spread vs base (was 2); wider cone for NCR tier balance
-    maxAngle: 15 # #Misfits Tweak - nerfed spread vs base (was 12)
-    angleIncrease: 2
+    maxAngle: 30 # #Misfits Tweak - nerfed spread vs base (was 12)
+    angleIncrease: 5
     angleDecay: 12
-    fireRate: 6
+    fireRate: 15
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    walkModifier: 0.7
+    sprintModifier: 0.7
   - type: HeldSpeedModifier
   - type: StaticPrice
     price: 800
@@ -123,13 +123,13 @@
   - type: Item
     sprite: _Nuclear14/Objects/Weapons/Guns/Heavy/avengerminigun.rsi
   - type: Gun
-    minAngle: 3 # #Misfits Tweak - increased spread range (was 2)
-    maxAngle: 10 # #Misfits Tweak - increased spread range (was 8)
+    minAngle: 5 # #Misfits Tweak - increased spread range (was 2)
+    maxAngle: 12 # #Misfits Tweak - increased spread range (was 8)
     angleIncrease: 2
     angleDecay: 8
-    fireRate: 8
+    fireRate: 15
   - type: HeldSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.85
+    sprintModifier: 0.85
   - type: StaticPrice
     price: 850

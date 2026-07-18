@@ -94,8 +94,8 @@
   completetime: 5
   materials:
     Lead: 500
-    Steel: 1100
-    N14Gunpowder: 1000
+    Steel: 1500
+    N14Gunpowder: 1500
 
 # 7.62
 - type: latheRecipe
